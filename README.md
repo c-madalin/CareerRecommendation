@@ -1,2 +1,5 @@
 # CareerRecommendation
-Frist Project for PLF course
+Cazan Madalin
+Pirau Tudor
+Balanica Stefan
+Catalin Buta
