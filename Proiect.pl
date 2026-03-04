@@ -28,3 +28,6 @@ numara_comune([H|T],Lista2,Scor) :-
 	Scor is S1 + 1.
 numara_comune([_|T],Lista2,Scor) :-
 	numara_comune(T,Lista2,Scor).
+
+	% recomanda(AbilitatiUtilizator, IntereseUtilizator, Recomandari)
+recomanda(AU, IU, R) :- findall(S-C, (cariera(C,,), abilitati(C,AC), interese(C,IC), calcul_match(AU,AC,MA), calcul_match(IU,IC,MI), calcul_scor(MA,MI,S)), R).
