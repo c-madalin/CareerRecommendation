@@ -1,6 +1,6 @@
 # CareerRecommendation
 Cazan Madalin
-Pirau Tudor
+Pirău Tudor-Ioan
 Balanica Stefan
 Catalin Buta
 
