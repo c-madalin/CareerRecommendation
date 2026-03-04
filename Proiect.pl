@@ -1,0 +1,10 @@
+cariera(programator_software, it, tehnologie).
+cariera(analist_date, it, analiza_date).
+cariera(manager_proiect, management, business).
+cariera(designer_grafic, design, media).
+cariera(inginer_civil, inginerie, constructii).
+cariera(medic, medicina, sanatate).
+cariera(profesor, educatie, invatamant).
+cariera(contabil, finante, bancar).
+cariera(avocat, drept, juridic).
+cariera(marketer_digital, marketing, publicitate).
