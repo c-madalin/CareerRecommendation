@@ -19,6 +19,13 @@ abilitati(contabil,[calcul,atentie_detalii,fiscalitate,excel]).
 abilitati(avocat,[argumentare,oratorie,drept_civil,cercetare]).
 abilitati(marketer_digital,[creativitate,seo,social_media,copywriting]).
 
+% interese(Cariera, ListaInterese)
+interese(programator_software,[tehnologie, inovatie,logica,calculatoare,rezolvare_probleme]).
+interese(analist_date,[cifre,statistica,tendinte,tehnologie,organizare]).
+interese(manager_proiect,[organizare,coordonare,afaceri,eficienta,strategie]).
+interese(designer_grafic,[arta,estetica,vizual,creativitate, inovatie]).
+interese(inginer_civil,[constructii, infrastructura,design_tehnic,fizica_aplicata]).
+
 % numara_comune(Lista1, Lista2, Rezultat)
 numara_comune([],_,0).
 numara_comune([H|T],Lista2,Scor) :-
@@ -30,4 +37,12 @@ numara_comune([_|T],Lista2,Scor) :-
 	numara_comune(T,Lista2,Scor).
 
 	% recomanda(AbilitatiUtilizator, IntereseUtilizator, Recomandari)
-recomanda(AU, IU, R) :- findall(S-C, (cariera(C,,), abilitati(C,AC), interese(C,IC), calcul_match(AU,AC,MA), calcul_match(IU,IC,MI), calcul_scor(MA,MI,S)), R).
+recomanda(AU,IU,R) :-
+	findall(S - C,
+		(cariera(C,,),
+			abilitati(C,AC),
+			 interese(C,IC),
+			calcul_match(AU,AC,MA),
+			calcul_match(IU,IC,MI),
+			calcul_scor(MA,MI,S)),
+		R).
