@@ -25,6 +25,11 @@ interese(analist_date,[cifre,statistica,tendinte,tehnologie,organizare]).
 interese(manager_proiect,[organizare,coordonare,afaceri,eficienta,strategie]).
 interese(designer_grafic,[arta,estetica,vizual,creativitate, inovatie]).
 interese(inginer_civil,[constructii, infrastructura,design_tehnic,fizica_aplicata]).
+interese(medic,[sanatate,stiinta,ajutorare,biologie_umana,medicina]).
+interese(profesor,[educatie,invatare,tineri,dezvoltare_personala,mentorat]).
+interese(contabil,[finante,cifre,exactitate,economie,organizare_financiara]).
+interese(avocat,[dreptate,lege,societate,argumentare,dezbateri]).
+interese(marketer_digital,[online,tendinte,social_media,comunicare,publicitate]).
 
 % numara_comune(Lista1, Lista2, Rezultat)
 numara_comune([],_,0).
