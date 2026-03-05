@@ -7,7 +7,9 @@ cariera(medic,medicina,sanatate).
 cariera(profesor,educatie, invatamant).
 cariera(contabil,finante,bancar).
 cariera(avocat,drept,juridic).
-cariera(marketer_digital,marketing,publicitate)% abilitati(Cariera, ListaAbilitati)
+cariera(marketer_digital,marketing,publicitate).
+
+% abilitati(Cariera, ListaAbilitati)
 abilitati(programator_software,[programare,logica,python,java,sql]).
 abilitati(analist_date,[statistica,analiza_date,python,r,excel]).
 abilitati(manager_proiect,[leadership,planificare,comunicare,negociere]).
@@ -41,13 +43,14 @@ numara_comune([H|T],Lista2,Scor) :-
 numara_comune([_|T],Lista2,Scor) :-
 	numara_comune(T,Lista2,Scor).
 
-	% recomanda(AbilitatiUtilizator, IntereseUtilizator, Recomandari)
+% recomanda(AbilitatiUtilizator, IntereseUtilizator, Recomandari)
 recomanda(AU,IU,R) :-
 	findall(S - C,
-		(cariera(C,,),
+		(cariera(C,_,_),
 			abilitati(C,AC),
 			 interese(C,IC),
-			calcul_match(AU,AC,MA),
-			calcul_match(IU,IC,MI),
-			calcul_scor(MA,MI,S)),
+			numara_comune(AU,AC,MA),
+			numara_comune(IU,IC,MI),
+			S is MA + MI,
+			S > 0),
 		R).
