@@ -54,3 +54,17 @@ recomanda(AU,IU,R) :-
 			S is MA + MI,
 			S > 0),
 		R).
+
+% Interfata cu utilizatorul si tratarea cazului fara potrivire
+afiseaza_recomandari([]) :-
+    write('Nu am gasit nicio cariera potrivita pentru profilul tau. Mai incearca!'), nl.
+afiseaza_recomandari([Scor-Nume|T]) :-
+    format('Scor: ~2f | Cariera: ~w~n', [Scor, Nume]),
+    afiseaza_recomandari(T).
+
+% Posibilitatea de filtrare dupa criterii suplimentare (ex: dupa Domeniu)
+recomanda_filtru_domeniu(AU, IU, DomeniuCautat) :-
+    recomanda_scor(AU, IU, ToateRecomandarile),
+    findall(S-C, (member(S-C, ToateRecomandarile), cariera(C, DomeniuCautat, _)), RecomandariFiltrate),
+    write('--- RECOMANDARI IN DOMENIUL: '), write(DomeniuCautat), write(' ---'), nl,
+    afiseaza_recomandari(RecomandariFiltrate).
