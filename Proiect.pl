@@ -68,3 +68,10 @@ recomanda_filtru_domeniu(AU, IU, DomeniuCautat) :-
     findall(S-C, (member(S-C, ToateRecomandarile), cariera(C, DomeniuCautat, _)), RecomandariFiltrate),
     write('--- RECOMANDARI IN DOMENIUL: '), write(DomeniuCautat), write(' ---'), nl,
     afiseaza_recomandari(RecomandariFiltrate).
+
+	% Calcularea gradului de potrivire (procentual) cerut in barem
+calcul_procent(ListaU, ListaCariera, Procent) :-
+    numara_comune(ListaU, ListaCariera, NumarComune),
+    length(ListaCariera, Total),
+    Total > 0,
+    Procent is NumarComune / Total.
