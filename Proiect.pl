@@ -43,6 +43,22 @@ numara_comune([H|T],Lista2,Scor) :-
 numara_comune([_|T],Lista2,Scor) :-
 	numara_comune(T,Lista2,Scor).
 
+% Refacerea sistemului de recomandare cu Formula de Scor ponderat si Ierarhizare
+recomanda_scor(AU,IU,RecomandariSortate) :-
+	findall(Scor - C,
+		(cariera(C,,),
+			abilitati(C,AC),
+			 interese(C,IC),
+			calcul_procent(AU,AC,MatchA),
+			calcul_procent(IU,IC,MatchI),
+			% Formula de calcul din barem:
+			Scor is (0.6*MatchA) + (0.4*MatchI),
+			Scor > 0),
+		RezultateNesortate),
+	% Ierarhizarea recomandarilor:
+	keysort(RezultateNesortate,SortateCrescator),
+	reverse(SortateCrescator,RecomandariSortate).
+
 % recomanda(AbilitatiUtilizator, IntereseUtilizator, Recomandari)
 recomanda(AU,IU,R) :-
 	findall(S - C,
@@ -57,21 +73,28 @@ recomanda(AU,IU,R) :-
 
 % Interfata cu utilizatorul si tratarea cazului fara potrivire
 afiseaza_recomandari([]) :-
-    write('Nu am gasit nicio cariera potrivita pentru profilul tau. Mai incearca!'), nl.
+	write('Nu am gasit nicio cariera potrivita pentru profilul tau. Mai incearca!'),
+	nl.
 afiseaza_recomandari([Scor-Nume|T]) :-
-    format('Scor: ~2f | Cariera: ~w~n', [Scor, Nume]),
-    afiseaza_recomandari(T).
+	format('Scor: ~2f | Cariera: ~w~n',[Scor,Nume]),
+	afiseaza_recomandari(T).
 
 % Posibilitatea de filtrare dupa criterii suplimentare (ex: dupa Domeniu)
-recomanda_filtru_domeniu(AU, IU, DomeniuCautat) :-
-    recomanda_scor(AU, IU, ToateRecomandarile),
-    findall(S-C, (member(S-C, ToateRecomandarile), cariera(C, DomeniuCautat, _)), RecomandariFiltrate),
-    write('--- RECOMANDARI IN DOMENIUL: '), write(DomeniuCautat), write(' ---'), nl,
-    afiseaza_recomandari(RecomandariFiltrate).
+recomanda_filtru_domeniu(AU,IU,DomeniuCautat) :-
+	recomanda_scor(AU,IU,ToateRecomandarile),
+	findall(S - C,
+		(member(S - C,ToateRecomandarile),
+			cariera(C,DomeniuCautat,_)),
+		RecomandariFiltrate),
+	write('--- RECOMANDARI IN DOMENIUL: '),
+	write(DomeniuCautat),
+	write(' ---'),
+	nl,
+	afiseaza_recomandari(RecomandariFiltrate).
 
 	% Calcularea gradului de potrivire (procentual) cerut in barem
-calcul_procent(ListaU, ListaCariera, Procent) :-
-    numara_comune(ListaU, ListaCariera, NumarComune),
-    length(ListaCariera, Total),
-    Total > 0,
-    Procent is NumarComune / Total.
+calcul_procent(ListaU,ListaCariera,Procent) :-
+	numara_comune(ListaU,ListaCariera,NumarComune),
+	length(ListaCariera,Total),
+	Total > 0,
+	Procent is NumarComune/Total.
