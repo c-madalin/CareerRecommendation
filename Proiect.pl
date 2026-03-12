@@ -33,6 +33,30 @@ interese(contabil,[finante,cifre,exactitate,economie,organizare_financiara]).
 interese(avocat,[dreptate,lege,societate,argumentare,dezbateri]).
 interese(marketer_digital,[online,tendinte,social_media,comunicare,publicitate]).
 
+% educatie(Cariera, NivelStudii)
+educatie(programator_software, licenta).
+educatie(analist_date, master).
+educatie(manager_proiect, master).
+educatie(designer_grafic, licenta).
+educatie(inginer_civil, licenta).
+educatie(medic, doctorat).
+educatie(profesor, licenta).
+educatie(contabil, licenta).
+educatie(avocat, master).
+educatie(marketer_digital, licenta).
+
+% salariu(Cariera, IntervalSalarial)
+salariu(programator_software, [5000, 15000]).
+salariu(analist_date, [6000, 14000]).
+salariu(manager_proiect, [8000, 18000]).
+salariu(designer_grafic, [4000, 10000]).
+salariu(inginer_civil, [5000, 12000]).
+salariu(medic, [7000, 20000]).
+salariu(profesor, [4000, 8000]).
+salariu(contabil, [4500, 11000]).
+salariu(avocat, [6000, 25000]).
+salariu(marketer_digital, [4000, 12000]).
+
 % numara_comune(Lista1, Lista2, Rezultat)
 numara_comune([],_,0).
 numara_comune([H|T],Lista2,Scor) :-
