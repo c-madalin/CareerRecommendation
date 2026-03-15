@@ -13,7 +13,7 @@ Acest proiect este un **Sistem Expert** dezvoltat în limbajul **Prolog**, conce
   * A dezvoltat logica de căutare a elementelor comune între liste (`numara_comune/3`).
   * A implementat funcția de calculare a gradului de potrivire procentual (`calcul_procent/3`), necesară pentru algoritmul de ierarhizare.
 
-* **Tudor Pîrău** - *Sistemul de Scor și Ierarhizarea*
+* **Tudor-Ioan Pirău** - *Sistemul de Scor și Ierarhizarea*
   * A implementat formula matematică din barem (`calcul_scor/3`): *0.6 x Abilități + 0.4 x Interese*.
   * A dezvoltat predicatul principal de calcul și sortare (`recomanda_scor/3` și `recomanda/3`), care folosește `findall`, `keysort` și `reverse` pentru a genera topul final al carierelor.
 
