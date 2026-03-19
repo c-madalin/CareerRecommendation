@@ -132,3 +132,21 @@ recomanda_filtru_domeniu(AU,IU,DomeniuCautat) :-
 	write(' ---'),
 	nl,
 	afiseaza_recomandari(RecomandariFiltrate).
+
+% Filtrare avansata dupa Educatie si Salariu Minim
+recomanda_filtru_avansat(AU,IU,EducatieDorita,SalariuMinim) :-
+	recomanda_scor(AU,IU,ToateRecomandarile),
+	findall(S - C,
+		(member(S - C,ToateRecomandarile),
+			educatie(C,EducatieDorita),
+			salariu(C,[_MinSalariu,MaxSalariu]),
+			MaxSalariu >= SalariuMinim),
+		RecomandariFiltrate),
+	write('--- RECOMANDARI FILTRATE ---'),
+	nl,
+	write('Educatie necesara: '),
+	write(EducatieDorita),
+	write(' | Salariu potential minim: '),
+	write(SalariuMinim),
+	nl,
+	afiseaza_recomandari(RecomandariFiltrate).
