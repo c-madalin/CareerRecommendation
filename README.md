@@ -46,3 +46,6 @@ Acest proiect este un **Sistem Expert** dezvoltat în limbajul **Prolog**, conce
 
 **3. Testarea cazului fără potrivire:**
 `?- afiseaza_recomandari([]).`
+
+**4. Testarea cazului complex:**
+recomanda_filtru_avansat([statistica, python], [cifre, tehnologie], master, 10000).
